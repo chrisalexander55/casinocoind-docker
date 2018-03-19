@@ -18,7 +18,7 @@ RUN cd src/; scons && \
 VOLUME /var/lib/casinocoind/
 
 COPY config /etc/casinocoind/
-COPY certifcate /etc/casinocoind/cert/
+COPY certificate /etc/casinocoind/cert/
 
 RUN rm -r src
 
