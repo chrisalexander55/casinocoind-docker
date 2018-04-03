@@ -11,7 +11,8 @@ RUN wget -O casinocoind https://github.com/casinocoin/casinocoind/releases/downl
     chown root:root /casinocoind && \
     mkdir -p /var/lib/casinocoind/db/nudb && \
     mkdir -p /var/log/casinocoind && \
-    mkdir -p /etc/casinocoind
+    mkdir -p /etc/casinocoind && \
+    apt remove -y wget
 
 VOLUME /var/lib/casinocoind/
 
