@@ -2,14 +2,13 @@ FROM ubuntu:xenial
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get -y install python-software-properties curl git scons ctags cmake pkg-config protobuf-compiler libprotobuf-dev libssl-dev python-software-properties libboost-all-dev tzdata software-properties-common && \
+    apt-get -y install wget libboost-all-dev libprotobuf-dev libssl-dev tzdata && \
     ln -fs /usr/share/zoneinfo/UTC /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
-RUN git clone https://github.com/casinocoin/casinocoind.git src; cd src/; git checkout master
-
-RUN cd src/; scons && \
-    cp build/casinocoind /casinocoind; strip /casinocoind && \
+RUN wget -O casinocoind https://github.com/casinocoin/casinocoind/releases/download/4.0.1/casinocoind-x64-ubuntu16 && \
+    chmod 755 /casinocoind && \
+    chown root:root /casinocoind && \
     mkdir -p /var/lib/casinocoind/db/nudb && \
     mkdir -p /var/log/casinocoind && \
     mkdir -p /etc/casinocoind
@@ -17,8 +16,6 @@ RUN cd src/; scons && \
 VOLUME /var/lib/casinocoind/
 
 COPY config /etc/casinocoind/
-
-RUN rm -r src
 
 EXPOSE 4443/tcp
 EXPOSE 5005/tcp
