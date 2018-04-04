@@ -2,6 +2,13 @@
 Easy way to run a CasinoCoind node in just minutes using docker. This project contains two docker 
 files for creating two types of CasinoCoin nodes. 
 
+## Builds
+[wenusch/casinocoind](https://hub.docker.com/r/wenusch/casinocoind/) contains a docker image with a default configuration.
+
+Run the an instance using the following docker command:
+
+```docker run -p 4443:4443 -p 17771:17771 -p 17771:17771/udp -ti wenusch/casinocoind```
+
 ## Basic node
 The basic node runs a plain text websocket. 
 
