@@ -7,7 +7,7 @@ files for creating two types of CasinoCoin nodes.
 
 Run the an instance using the following docker command:
 
-```docker run -p 4443:4443 -p 17771:17771 -p 17771:17771/udp -ti wenusch/casinocoind```
+```docker run -p 4443:4443 -p 17771:17771 -p 17771:17771/udp -d wenusch/casinocoind```
 
 ## Basic node
 The basic node runs a plain text websocket. 
